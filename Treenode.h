@@ -1,14 +1,15 @@
-class TreeNode {   
-                                        
-   TreeNode *leftPtr; // pointer to left subtree 
-   int data; // node value                               
-   TreeNode *rightPtr; // pointer to right subtree
-public:
+class TreeNode 
+{   
+  int data; // node value                                  
+  TreeNode *leftPtr; // pointer to left subtree                              
+  TreeNode *rightPtr; // pointer to right subtree
+
+  public:
         // 7 function for 
         TreeNode(int); 
         ~TreeNode();
-        void set_left(TreeNode* t);
-        void set_right(TreeNode* t) {rightPtr=t;}
+        void set_left(TreeNode* t) {leftPtr = t;}
+        void set_right(TreeNode* t) {rightPtr = t;}
         int get_value(){return data;}
         TreeNode* move_right(){ return rightPtr; }
         TreeNode* move_left(){ return leftPtr; }
@@ -20,21 +21,15 @@ public:
 typedef TreeNode * TreeNodePtr; 
 // synonym for TreeNode*
 
-void TreeNode::set_left(TreeNode *t)
-{
-  leftPtr=t;
-}
 
 TreeNode::TreeNode(int x)
 {
-   data =x;
-   leftPtr=NULL;
-   rightPtr=NULL;
-
+   data = x;
+   leftPtr = NULL;
+   rightPtr = NULL;
 }
 
 TreeNode::~TreeNode() // Destructor to delete the node
 {
   cout<<"Deleting "<< data<<endl;
-  
 }

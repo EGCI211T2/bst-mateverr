@@ -97,7 +97,8 @@ void BST::insert_node(int value) // Finish insert_node function
 }
 
 
-void BST::print(int option) {
+void BST::print(int option) 
+{
   switch (option) {
   case 0:
     inOrder(rootPtr);
@@ -122,21 +123,23 @@ void BST::print(int option) {
     postOrder(rootPtr);
     cout << endl;
     cout << "Tree" << endl;
+    printTree(rootPtr, 0);
   default:
-    printTree(rootPtr,0);
+    //printTree(rootPtr, 0);
     cout << endl;
   }
 }
 
 
-BST::BST() {
+BST::BST() 
+{
   rootPtr=NULL;
   size=0;
 }
 
-BST::~BST() { 
+BST::~BST() 
+{
   cout << "Kill BST" << endl; 
-    
 }
 
 void inOrder(TreeNodePtr treePtr) // Recursive
@@ -153,36 +156,65 @@ void inOrder(TreeNodePtr treePtr) // Recursive
 } // end function
   //printTree(rootPtr,0);
 
-void printTree(TreeNodePtr treePtr,int l) 
+void printTree(TreeNodePtr treePtr,int level = 0) 
 {
   // TreeNodePtr treePtr=rootPtr;
-        // end if
+  if (treePtr == nullptr) 
+  {
+    return;
+  }
+
+  level++;
+  //treePtr = treePtr->move_right();
+  printTree(treePtr->move_right(), level);
+
+  cout << setw(3*level) << treePtr->get_value() << endl;
+  
+  printTree(treePtr->move_left(), level);
+  
+  //cout << setw(3*level) << treePtr->get_value() << endl;
+  
+  
+  // end if
 } // end function
 
 
 void postOrder(TreeNodePtr treePtr) 
 {
   // TreeNodePtr treePtr=rootPtr;
-  if (treePtr) 
-  {
-   
-  }                                          // end if
+  if (treePtr == nullptr) return;
+  
+  postOrder(treePtr->move_left());
+
+  postOrder(treePtr->move_right());
+
+  cout << setw(3) << treePtr->get_value();
+
+
+  // end if
 } // end function
 
-void kill(TreeNodePtr treePtr) {
+void kill(TreeNodePtr treePtr) 
+{
   // TreeNodePtr 
-  if(treePtr){
+  if(treePtr)
+  {
        //delete everything
         
-    }                                          // end if
+  }                                          // end if
 } // end function
 
 void preOrder(TreeNodePtr treePtr) 
 {
-  if(treePtr)
-  {
+
   // TreeNodePtr treePtr=rootPtr;
-   
-  }                                          // end if
+  if (treePtr == nullptr) return; // no branch to traverse to
+
+  cout << setw(3) << treePtr->get_value();
+
+  preOrder(treePtr->move_left());
+
+  preOrder(treePtr->move_right());
+                                     
 } // end function
 
