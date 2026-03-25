@@ -115,6 +115,8 @@ void BST::print(int option) {
     cout << endl;
     cout << "Tree" << endl;
     printTree(rootPtr, 0);
+    cout << "Kill BST" << endl;
+    kill(rootPtr);
   default:
     //printTree(rootPtr, 0);
     cout << endl;
@@ -122,7 +124,7 @@ void BST::print(int option) {
 }
 
 BST::BST() { rootPtr=NULL; size=0; }
-BST::~BST() { cout << "Kill BST" << endl; }
+BST::~BST() {}
 
 // Recursive
 void inOrder(TreeNodePtr treePtr) { 
@@ -161,6 +163,9 @@ void kill(TreeNodePtr treePtr) {// Need work
   // TreeNodePtr 
   if(treePtr)
   {
+    kill(treePtr->move_left());
+    kill(treePtr->move_right());
+    delete treePtr;
        //delete everything 
   }                                          // end if
 } // end function
