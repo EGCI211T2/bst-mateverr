@@ -31,8 +31,7 @@ void BST::insert_node(int value) {
                                   // Need to add new node to existing tree
   // If create new node
   if (new_node) {
-    if (size == 0) rootPtr = new_node;
-      
+    if (size == 0) rootPtr = new_node; 
     else {
       t = rootPtr;
       while (inserted == 0) // everytime the function is called inserted == 0
@@ -65,29 +64,9 @@ void BST::insert_node(int value) {
         }
       }
     }
-
     ++size; // Increase the size
-
-   /*   if(First Node){
-          
-      }
-      else{
-          t=rootPtr;
-          while(!inserted){//insert =0
-              //once the location is found -->inserted=1
-              //1.should it go left or right
-              //2. should it be inserted, if availabble inserted, if not move
-              //3. once inserted make insert=1
-              
-              
-              
-          }// end while*/
-      
-      //}//ene else
-        ++size;
   }//end  new node
 }
-
 
 void BST::print(int option) {
   switch (option) {
@@ -118,8 +97,8 @@ void BST::print(int option) {
     cout << "Kill BST" << endl;
     kill(rootPtr);
   default:
-    //printTree(rootPtr, 0);
-    cout << endl;
+    // printTree(rootPtr, 0);
+    // cout << endl;
   }
 }
 
@@ -161,8 +140,7 @@ void postOrder(TreeNodePtr treePtr) {
 
 void kill(TreeNodePtr treePtr) {// Need work
   // TreeNodePtr 
-  if(treePtr)
-  {
+  if(treePtr) {
     kill(treePtr->move_left());
     kill(treePtr->move_right());
     delete treePtr;
